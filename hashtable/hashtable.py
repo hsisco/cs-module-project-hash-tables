@@ -21,7 +21,7 @@ class HashTable:
     """
 
     def __init__(self, capacity):
-        # Your code here
+        # Your code here store array here
 
 
     def get_num_slots(self):
@@ -46,7 +46,7 @@ class HashTable:
         # Your code here
 
 
-    def fnv1(self, key):
+    def fnv1(self, key):    # choose this....
         """
         FNV-1 Hash, 64-bit
 
@@ -56,7 +56,7 @@ class HashTable:
         # Your code here
 
 
-    def djb2(self, key):
+    def djb2(self, key):    #... or this
         """
         DJB2 hash, 32-bit
 
