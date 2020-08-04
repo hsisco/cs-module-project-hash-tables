@@ -46,9 +46,10 @@ class HashTable:
         """
         DJB2 hash, 32-bit
         """
-        hash = 5281
-        for b in key:
-            hash = ((hash << 5) + hash) + ord(b)
+        hash_var = 5381
+        for element in key:
+            hash_var = (hash_var * 33) + ord(element)
+        return hash_var
 
     def hash_index(self, key):
         """
@@ -62,8 +63,8 @@ class HashTable:
         """
         Store the value with the given key.
         Hash collisions should be handled with Linked List Chaining.
-        """
-        index = self.hash_index(key)
+        """    
+        index = self.hash_index(key) % len(self.table)
         self.table[index] = value
 
     def delete(self, key):
@@ -71,7 +72,7 @@ class HashTable:
         Remove the value stored with the given key.
         Print a warning if the key is not found.
         """
-        index = self.hash_index(key)
+        index = self.hash_index(key) % len(self.table)
         self.table[index] = None
 
     def get(self, key):
@@ -79,7 +80,7 @@ class HashTable:
         Retrieve the value stored with the given key.
         Returns None if the key is not found.
         """
-        index = self.hash_index(key)
+        index = self.hash_index(key) % len(self.table)
         return self.table[index]
 
     def resize(self, new_capacity):
@@ -114,11 +115,11 @@ if __name__ == "__main__":
         print(ht.get(f"line_{i}"))
 
     # Test resizing
-    old_capacity = ht.get_num_slots()
-    ht.resize(ht.capacity * 2)
-    new_capacity = ht.get_num_slots()
+    # old_capacity = ht.get_num_slots()
+    # ht.resize(ht.capacity * 2)
+    # new_capacity = ht.get_num_slots()
 
-    print(f"\nResized from {old_capacity} to {new_capacity}.\n")
+    # print(f"\nResized from {old_capacity} to {new_capacity}.\n")
 
     # Test if data intact after resizing
     for i in range(1, 13):
