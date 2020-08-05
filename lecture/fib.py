@@ -10,7 +10,7 @@
 #     # base case                 # O(#_times_calls_self ^ n) --> horrendous!
 #     if n <= 1:
 #         return n
-#     return     fib(n-1) + fib(n-2)
+#     return fib(n-1) + fib(n-2)
     
 # print(fib(40))    # Takes about 30 sec to get answer: 102334155
 
@@ -21,6 +21,7 @@
 # progress toward the base case
 # memoize in a cache
 # call itself (recursion)
+
 cache = {}
 
 def fib(n):                     

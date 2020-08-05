@@ -41,19 +41,19 @@ class HashTable:
         return load_factor
 
 
-    def fnv1(self, key):
-        """
-        FNV-1 Hash, 64-bit
-        """
+    # def fnv1(self, key):
+    #     """
+    #     FNV-1 Hash, 64-bit
+    #     """
 
 
     def djb2(self, key):
         """
         DJB2 hash, 32-bit
         """
-        hash_var = 5281
+        hash_var = 5381
         for b in key:
-            hash = ((hash_var << 5) + hash_var) + ord(b)
+            hash_var = ((hash_var << 5) + hash_var) + ord(b)
         return hash_var
 
 
@@ -107,7 +107,6 @@ class HashTable:
                     break
                 prev = curr
                 curr = curr.next
-
             if curr is None:
                 print("Not in hashtable")
             else:
@@ -142,18 +141,6 @@ class HashTable:
                 self.put(curr.key, curr.value) 
                 curr = curr.next
         self.old_table = None
-
-    def print_table(self):
-        for index in range(len(self.table)):
-            print(f"\n{index}\n")
-            curr = self.table[index]
-            while curr:
-                print(curr.key)
-                curr = curr.next
-        print("\n")
-
-    def get_count(self):
-        return self.count
 
 
 if __name__ == "__main__":
